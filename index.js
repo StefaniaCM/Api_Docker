@@ -44,7 +44,7 @@ app.listen(process.env.PORT, () => {
 });
 
 
-app.post('/Crear_ser_interdimensional', (req, res) => {
+app.post('/crear-ser-interdimensional', (req, res) => {
   const { nombre_usuario, don, planeta_origen, contrasena, email_etereo } = req.body;
   const hashedPassword = crypto.createHash('sha256').update(contrasena).digest('hex');
   const sql = 'INSERT INTO seres_interdimensionales (nombre_usuario, don, planeta_origen, contrasena, email_etereo) VALUES (?, ?, ?, ?, ?)';
@@ -55,7 +55,7 @@ app.post('/Crear_ser_interdimensional', (req, res) => {
 });
 
 
-app.get('/consultar_ser_intermensional', (req, res) => {
+app.get('/consultar-seres-interdimensional', (req, res) => {
   const sql = 'SELECT * FROM seres_interdimensionales';
   db.query(sql, (err, result) => {
     if (err) throw err;
@@ -64,7 +64,7 @@ app.get('/consultar_ser_intermensional', (req, res) => {
 });
 
 
-app.get('/consultar_ser_interdimensional_por:id', (req, res) => {
+app.get('/consultar-ser-interdimensional-by-id/:id', (req, res) => {
   const sql = 'SELECT * FROM seres_interdimensionales WHERE id_usuario = ?';
   db.query(sql, [req.params.id], (err, result) => {
     if (err) throw err;
@@ -73,7 +73,7 @@ app.get('/consultar_ser_interdimensional_por:id', (req, res) => {
 });
 
 
-app.put('/Actualizar_ser_interdimensional', (req, res) => {
+app.put('/actualizar-ser-interdimensional', (req, res) => {
   const { nombre_usuario, don, planeta_origen, contrasena, email_etereo } = req.body;
   const hashedPassword = crypto.createHash('sha256').update(contrasena).digest('hex');
   const sql = 'UPDATE seres_interdimensionales SET nombre_usuario = ?, don = ?, planeta_origen = ?, contrasena = ?, email_etereo = ? WHERE id_usuario = ?';
@@ -84,7 +84,7 @@ app.put('/Actualizar_ser_interdimensional', (req, res) => {
 });
 
 
-app.delete('/Eliminar_ser_interdimensional', (req, res) => {
+app.delete('/eliminar-ser-interdimensional', (req, res) => {
   const sql = 'DELETE FROM seres_interdimensionales WHERE id_usuario = ?';
   db.query(sql, [req.params.id], (err, result) => {
     if (err) throw err;
